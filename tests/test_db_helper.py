@@ -8,15 +8,15 @@ class TestDbHelper(TestCase):
     @patch('src.db_helper.DbHelper')
     def test_get_maximum_salary_with_mocking(self, MockDbHelper):
         db_helper = MockDbHelper()  # create a mock object of DbHelper class
-        db_helper.get_maximum_salary.return_value = "700"
+        db_helper.get_maximum_salary.return_value = "60000"
         actual = db_helper.get_maximum_salary()
-        expected = "700"
+        expected = "60000"
         self.assertEqual(actual, expected)
 
     @patch('src.db_helper.DbHelper')
     def test_get_minimum_salary_with_mocking(self, MockDbHelper):
         db_helper = MockDbHelper()       # create a mock object of DbHelper class
-        db_helper.get_minimum_salary.return_value = "556"
+        db_helper.get_minimum_salary.return_value = "50000"
         actual = db_helper.get_minimum_salary()
-        expected = "556"
+        expected = "50000"
         self.assertEqual(actual, expected)    
