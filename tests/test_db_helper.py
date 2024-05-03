@@ -19,4 +19,14 @@ class TestDbHelper(TestCase):
         db_helper.get_minimum_salary.return_value = "50000"
         actual = db_helper.get_minimum_salary()
         expected = "50000"
-        self.assertEqual(actual, expected)    
+        self.assertEqual(actual, expected)
+
+    @patch('src.db_helper.DbHelper')
+    def test_max_salary_is_greater_than_min_salary(self, MockDbHelper):
+        db_helper = MockDbHelper()  # create a mock object of DbHelper class
+        db_helper.get_maximum_salary.return_value = 60000
+        db_helper.get_minimum_salary.return_value = 50000
+
+        max_salary = db_helper.get_maximum_salary()
+        min_salary = db_helper.get_minimum_salary()
+        self.assertGreater(max_salary, min_salary)
